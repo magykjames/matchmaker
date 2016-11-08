@@ -2,14 +2,14 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
 
+from questions.models import Question
+
 from .forms import ContactForm, SignUpForm
 from .models import SignUp
 
 # Create your views here.
 def home(request):
     title = "Sign Up Now"
-    # if request.user.is_authenticated():
-    #     title = "My Title %s" %(request.user)
     form = SignUpForm(request.POST or None)
 
     context = {
@@ -24,10 +24,8 @@ def home(request):
             "title": "Thank You"
         }
 
-    if request.user.is_authenticated() and request.user.is_staff:
-        # for x in SignUp.objects.all():
-        #     print(x.full_name)
-        queryset = SignUp.objects.all().order_by('-timestamp')
+    if request.user.is_authenticated():
+        queryset = Question.objects.all().order_by('-timestamp')
         context = {
             "queryset": queryset
         }
