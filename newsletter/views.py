@@ -29,6 +29,7 @@ def home(request):
         context = {
             "queryset": queryset
         }
+        return render(request, "questions/home.html", context)
 
     return render(request, "home.html", context)
 
