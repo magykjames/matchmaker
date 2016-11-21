@@ -7,7 +7,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'newsletter.views.home', name='home'),
-    url(r'^questions/(?P<id>\d+)/$', 'questions.views.single', name='question_single'),
+    url(r'^question/(?P<id>\d+)/$', 'questions.views.single', name='question_single'),
     url(r'^questions/$', 'questions.views.home', name='questions_home'),
     url(r'^contact/$', 'newsletter.views.contact', name='contact'),
     url(r'^about/$', 'matchmaker.views.about', name='about'),
